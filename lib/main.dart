@@ -38,6 +38,10 @@ class _TaskListScreenState extends State<TaskListScreen> {
       setState(() {
         tasks.add(Task(name: _taskController.text, priority: _selectedPriority));
         _taskController.clear();
+        tasks.sort((a, b) {
+          const priorityOrder = {'High': 3, 'Medium': 2, 'Low': 1};
+          return priorityOrder[b.priority]! - priorityOrder[a.priority]!;
+      });
       });
     }
   }
